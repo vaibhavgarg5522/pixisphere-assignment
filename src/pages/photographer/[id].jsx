@@ -27,7 +27,7 @@ export default function PhotographerProfile() {
 
         setPhotographer(found);
       } catch (error) {
-        console.error("❌ Error loading photographer:", error);
+        console.error(" Error loading photographer:", error);
         setPhotographer(null);
       } finally {
         setLoading(false);

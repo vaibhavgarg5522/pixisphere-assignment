@@ -9,7 +9,7 @@ export default function FilterSidebar({ filters, setFilters }) {
     minRating: 0,
     styles: [],
     city: "",
-    ...filters, // fallback if props are undefined
+    ...filters,
   });
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function FilterSidebar({ filters, setFilters }) {
   };
 
   return (
-    <aside className="w-full md:w-64 p-4 border rounded-xl shadow bg-white">
+    <aside className="w-full md:w-64 p-4 border rounded-xl shadow bg-white text-gray-800">
       <h3 className="text-lg font-semibold mb-4">Filters</h3>
 
       {/* Price Range */}
@@ -60,7 +60,7 @@ export default function FilterSidebar({ filters, setFilters }) {
           onChange={(e) =>
             setLocalFilters({ ...localFilters, minRating: Number(e.target.value) })
           }
-          className="mt-2 w-full p-2 border rounded"
+          className="mt-2 w-full p-2 border rounded text-black"
         >
           {[0, 3, 4, 4.5].map((r) => (
             <option key={r} value={r}>
@@ -81,7 +81,7 @@ export default function FilterSidebar({ filters, setFilters }) {
               onChange={() => handleStyleChange(style)}
               className="mr-2"
             />
-            {style}
+            <span className="text-black">{style}</span>
           </label>
         ))}
       </div>
@@ -94,7 +94,7 @@ export default function FilterSidebar({ filters, setFilters }) {
           onChange={(e) =>
             setLocalFilters({ ...localFilters, city: e.target.value })
           }
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded text-black"
         >
           <option value="">All Cities</option>
           {cityOptions.map((city) => (

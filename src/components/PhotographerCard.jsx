@@ -15,12 +15,14 @@ export default function PhotographerCard({ photographer }) {
         className="w-full h-48 object-cover rounded-lg"
       />
       <div className="mt-4">
-        <h2 className="text-xl font-semibold">{photographer.name}</h2>
-        <p className="text-sm text-gray-500">{photographer.location}</p>
-        <p className="mt-2 text-sm text-gray-700">
+        <h2 className="text-xl font-semibold text-black">
+          {photographer.name}
+        </h2>
+        <p className="text-sm text-gray-700">{photographer.location}</p>
+        <p className="mt-2 text-sm text-gray-800">
           <strong>Starting at:</strong> ₹{photographer.price}
         </p>
-        <p className="text-sm">
+        <p className="text-sm text-gray-800">
           <strong>Rating:</strong> {photographer.rating} ★
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
