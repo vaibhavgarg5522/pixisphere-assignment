@@ -17,24 +17,17 @@ export default function PhotographerProfile() {
     if (!id) return;
 
     const fetchPhotographer = async () => {
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/photographers/${id}`;
-      console.log("📡 Fetching photographer from:", url); // Debug log
-
       try {
-        const res = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          mode: "cors",
-        });
-
-        if (!res.ok) throw new Error("Photographer not found");
-
+        const res = await fetch("/data.json");
         const data = await res.json();
-        setPhotographer(data);
+
+        // Convert id from query (string) to number and find the photographer
+        const found = data.photographers.find((p) => p.id === parseInt(id));
+        if (!found) throw new Error("Photographer not found");
+
+        setPhotographer(found);
       } catch (error) {
-        console.error(" Fetch error:", error);
+        console.error("❌ Error loading photographer:", error);
         setPhotographer(null);
       } finally {
         setLoading(false);

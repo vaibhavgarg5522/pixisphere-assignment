@@ -4,7 +4,13 @@ const styleOptions = ["Traditional", "Candid", "Studio", "Outdoor"];
 const cityOptions = ["Bengaluru", "Delhi", "Mumbai", "Hyderabad"];
 
 export default function FilterSidebar({ filters, setFilters }) {
-  const [localFilters, setLocalFilters] = useState(filters);
+  const [localFilters, setLocalFilters] = useState({
+    maxPrice: 20000,
+    minRating: 0,
+    styles: [],
+    city: "",
+    ...filters, // fallback if props are undefined
+  });
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -12,7 +18,7 @@ export default function FilterSidebar({ filters, setFilters }) {
     }, 300);
 
     return () => clearTimeout(debounce);
-  }, [localFilters]);
+  }, [localFilters, setFilters]);
 
   const handleStyleChange = (style) => {
     setLocalFilters((prev) => ({
@@ -41,10 +47,12 @@ export default function FilterSidebar({ filters, setFilters }) {
           }
           className="w-full mt-2"
         />
-        <div className="text-sm text-gray-600 mt-1">Up to ₹{localFilters.maxPrice}</div>
+        <div className="text-sm text-gray-600 mt-1">
+          Up to ₹{localFilters.maxPrice}
+        </div>
       </div>
 
-      {/* Rating */}
+      {/* Minimum Rating */}
       <div className="mb-4">
         <label className="block text-sm font-medium">Minimum Rating:</label>
         <select

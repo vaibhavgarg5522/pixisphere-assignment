@@ -1,6 +1,6 @@
 export default function ReviewList({ reviews = [] }) {
   if (!reviews.length) {
-    return <p className="text-center text-gray-500">No reviews available.</p>;
+    return <p className="text-center text-gray-500 mt-4">No reviews available.</p>;
   }
 
   return (
@@ -17,7 +17,6 @@ export default function ReviewList({ reviews = [] }) {
           </div>
 
           <div className="flex items-center mb-2">
-            {/* Simple star rendering */}
             <div className="text-yellow-500 text-sm mr-2">
               {"⭐".repeat(Math.floor(review.rating))}
             </div>
